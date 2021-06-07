@@ -1,0 +1,54 @@
+doctype html
+html(lang="en")
+head
+  meta(charset='UTF-8')
+  title Authentication
+  style.
+    body {
+    text-align: center;
+    }
+    form {
+    display: inline-flex;
+    flex-direction: column;
+    margin: 0 20px;
+    }
+    label {
+    display: flex;
+    justify-content: space-between;
+    }
+    .error {
+    color: red;
+    }
+if name
+  h1 Welcome, #{name} 🔥
+  span
+    a(href="/api/logout")
+      button Logout
+else
+  h1 Not authenticated 🚧
+
+  if error
+    h2.error= error
+
+  form(action='/api/register' method='post')
+    h3 Register
+    label
+      span Name:
+      input(required='' type='text' name='name' placeholder='Name')
+    label
+      span Username:
+      input(required='' type='text' name='username' placeholder='Username')
+    label
+      span Password:
+      input(required='' type='password' name='password' placeholder='Password')
+    input(type='submit' value='Register')
+
+  form(action='/api/login' method='post')
+    h3 Login
+    label
+      span Username:
+      input(required='' type='text' name='username' placeholder='Username')
+    label
+      span Password:
+      input(required='' type='password' name='password' placeholder='Password')
+    input(type='submit' value='Login')
